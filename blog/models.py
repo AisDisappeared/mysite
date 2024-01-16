@@ -15,6 +15,8 @@ class post(models.Model):
     published_date = models.DateTimeField(null=True)
     
     
+    class Meta:
+        ordering = ['-created_date']
     
     def __str__(self):
         return '{} - {}'.format(self.title , self.id)

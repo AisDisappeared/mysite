@@ -10,7 +10,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'published_date','created_date' , 'status')
     list_filter = ('status',)
     search_fields = ('title', 'content')
-    ordering = ('-created_date',)
+    # ordering = ('-created_date',)
 
 
 # Register your models here.
