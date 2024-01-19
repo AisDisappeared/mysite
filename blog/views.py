@@ -12,11 +12,12 @@ def blog_view(request):
     context = {'posts' : rows }
     # using F function to to have auto increment in our counted views field 
     post.objects.filter(status=True , published_date__lte = current_time).update(counted_view=F('counted_view')+1)
-
     return render(request , 'blog/blog-home.html' , context)                     
 
-def blog_single(request):
-    return render(request , 'blog/blog-single.html')  
+def blog_single(request,pid):
+    posts = get_object_or_404(post,pk=pid)
+    context = {'post':posts}
+    return render(request , 'blog/blog-single.html',context)  
 
 def test(request ,pid):
     posts = get_object_or_404(post,pk=pid)
