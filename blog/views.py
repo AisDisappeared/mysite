@@ -15,7 +15,9 @@ def blog_view(request):
     return render(request , 'blog/blog-home.html' , context)                     
 
 def blog_single(request,pid):
-    posts = get_object_or_404(post,pk=pid)
+    current_time = timezone.now()
+    rows = post.objects.filter(published_date__lte=current_time,status=1)
+    posts = get_object_or_404(rows,pk=pid)
     context = {'post':posts}
     return render(request , 'blog/blog-single.html',context)  
 
