@@ -7,7 +7,7 @@ from .models import post
 class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date' 
     empty_value_display = "-empty-"
-    list_display = ('title', 'published_date','created_date' , 'status')
+    list_display = ('title', 'published_date','created_date' , 'status' , 'counted_view')
     list_filter = ('status',)
     search_fields = ('title', 'content')
     # ordering = ('-created_date',)
