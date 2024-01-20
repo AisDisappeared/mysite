@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import post
+from .models import post,Category
 
 
 # we can use decorators here for registration
@@ -16,4 +16,4 @@ class PostAdmin(admin.ModelAdmin):
 # Register your models here.
 
 admin.site.register(post , PostAdmin)
- 
+admin.site.register(Category)
