@@ -83,7 +83,7 @@
                 {% if prev_post %}
                 <div class="thumb">
                   <a href="{% url 'blog:single' pid=prev_post.id %}"><img class="img-fluid"
-                      src="{% static 'img/blog/prev.jpg' %}" alt="" /></a>
+                      src={{prev_post.image.url}} alt="" /></a>
                 </div>
                 <div class="arrow">
                   <a href="{% url 'blog:single' pid=prev_post.id %}"><span
@@ -111,7 +111,7 @@
                 </div>
                 <div class="thumb">
                   <a href="{% url 'blog:single' pid=next_post.id %}"><img class="img-fluid"
-                      src="{% static 'img/blog/next.jpg' %}" alt="" /></a>
+                      src="{{next_post.image.url}}" alt="" /></a>
                 </div>
                 {% endif %}
               </div>
