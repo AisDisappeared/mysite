@@ -9,7 +9,9 @@ def blog_view(request):
     # using lte method to filter less than equal
     posts = post.objects.filter(status = 1, published_date__lte = current_time)
     context = {'posts' : posts}
-    return render(request , 'blog/blog-home.html' , context)                     
+    return render(request , 'blog/blog-home.html' , context)   
+
+
 
 def blog_single(request, pid):
     # calculating the current time
@@ -18,11 +20,13 @@ def blog_single(request, pid):
     all_posts = post.objects.filter(status = 1, published_date__lte = current_time)
     # set the default id for the post the user is requesting to watch that 
     current_index = 0
+
     # catch the order of the post that user is requesting to watch , it means that we are going to underestate that the post where putted
     for i , p in enumerate(all_posts):
         if p.id == pid:
             current_index = i
             break
+
     # making the prev and next posts
     prev_post = all_posts[current_index - 1] if current_index - 1 >= 0 else None 
     next_post = all_posts[current_index + 1] if current_index + 1 < len(all_posts) else None
@@ -32,6 +36,7 @@ def blog_single(request, pid):
     # having auto increment about our post count of views 
     current_post.counted_view += 1
     current_post.save() 
+    # insert information into the context and show them to the user
     context = {'Post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post}
     return render(request , 'blog/blog-single.html', context)  
 
