@@ -87,11 +87,11 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 posts-list">
-          {%for post in posts%}
-          <div class="single-post row">
+        {% for post in posts %}
+        <div class="single-post row">
           <div class="col-lg-3 col-md-3 meta-details">
             <ul class="tags">
-              {{ post.category.all|join:", " }}
+              {{post.category.all|join:", "}}
             </ul>
             <div class="user-details row">
               <p class="user-name col-lg-12 col-md-12 col-6">
@@ -117,12 +117,12 @@
               <h3>{{post.title}}</h3>
             </a>
             <p class="excert">
-             {{post.content}}
+              {{post.content}}
             </p>
             <a href="{% url 'blog:single' pid=post.id %}" class="primary-btn">View More</a>
           </div>
-          </div>
-          {%endfor%}
+        </div>
+        {%endfor%}
         <nav class="blog-pagination justify-content-center d-flex">
           <ul class="pagination">
             <li class="page-item">
