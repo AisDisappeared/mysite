@@ -40,3 +40,7 @@ def blog_single(request, pid):
     context = {'Post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post}
     return render(request , 'blog/blog-single.html', context)  
 
+
+
+def  test(request):
+    return render(request, 'test.html',)
