@@ -1,6 +1,8 @@
+from unicodedata import category
 from django import template
 from blog.models import post 
 from django.utils import timezone
+from blog.models import Category 
 
 register = template.Library()
 # simple tag
@@ -28,3 +30,17 @@ def snippet(content,arg=20):
 def latestposts():
     posts = post.objects.filter(status = True).order_by('published_date')[:4]
     return {'posts' : posts}
+
+# inclusion tag 
+@register.inclusion_tag('blog/blog-post-categories.html') 
+def postCats():
+    now = timezone.now()
+    posts = post.objects.filter(status = True ,published_date__lt=now)
+    categories = Category.objects.all()
+    cat_dict = {}
+    for name in categories:
+        c = posts.filter(category=name).count()
+        cat_dict[name] = c 
+    return {'categories' : cat_dict}
+             
+         
