@@ -5,10 +5,12 @@ from django.utils import timezone
 
 
 
-def blog_view(request):
+def blog_view(request,cat_name=None):
     current_time = timezone.now()
     # using lte method to filter less than equal
-    posts = post.objects.filter(status = 1, published_date__lte = current_time)
+    posts = post.objects.filter(status = True, published_date__lte = current_time)
+    if cat_name:
+         posts = posts.filter(category__name = cat_name)
     context = {'posts' : posts}
     return render(request , 'blog/blog-home.html' , context)   
 
@@ -53,6 +55,5 @@ def  test(request):
 def blog_category(request,cat_name):
     now = timezone.now()
     posts = post.objects.filter(status = True , published_date__lte=now)
-    posts = posts.filter(category__name = cat_name)
     context = {'posts' : posts}
     return render(request , 'blog/blog-home.html' , context)   
