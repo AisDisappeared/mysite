@@ -5,12 +5,14 @@ from django.utils import timezone
 
 
 
-def blog_view(request,cat_name=None):
+def blog_view(request,cat_name=None,author_username=None):
     current_time = timezone.now()
     # using lte method to filter less than equal
     posts = post.objects.filter(status = True, published_date__lte = current_time)
     if cat_name:
          posts = posts.filter(category__name = cat_name)
+    if author_username:
+        posts = posts.filter(author__username= author_username)
     context = {'posts' : posts}
     return render(request , 'blog/blog-home.html' , context)   
 
