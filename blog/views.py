@@ -49,9 +49,9 @@ def blog_single(request, pid):
 
 
 
-# test function
-def  test(request):
-    return render(request, 'test.html',)
+# # test function
+# def  test(request):
+#     return render(request, 'test.html',)
 
 
 # search view 

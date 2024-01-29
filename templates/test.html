@@ -8,9 +8,25 @@
     <title>test</title>
 </head>
 <body>
-    <h1>testing page</h1>
-    <p>test: </p>
-    {% popularposts %}
-   
+  
+    <form action="{% url 'website:test' %}" method="post">
+        {% csrf_token %}
+        <label>name:</label>
+        <input name = "name" type="text"><br>
+
+        <label>email:</label>
+        <input name="email" type="email"><br>
+
+        <label>subject:</label>
+        <input name="subject" type="text"><br>
+
+        <label>message:</label>
+        <input type="text" name="message"><br>
+
+        <br>
+        <button type="submit">submit</button>
+         
+    </form>
+  
 </body>
 </html>
