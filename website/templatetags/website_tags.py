@@ -8,5 +8,6 @@ register = template.Library()
 
 @register.inclusion_tag('website/Sixlatest.html')
 def sixlatest():
-   posts = post.objects.filter(status = True).order_by('-published_date')[:6]
+   now = timezone.now()
+   posts = post.objects.filter(status = True ,published_date__lte=now).order_by('-published_date')[:6]
    return {'posts': posts}

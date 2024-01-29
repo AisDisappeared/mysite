@@ -28,7 +28,8 @@ def snippet(content,arg=20):
 # inclusion tag 
 @register.inclusion_tag('blog/blog-popularposts.html')
 def latestposts():
-    posts = post.objects.filter(status = True).order_by('-published_date')[:4]
+    now = timezone.now()
+    posts = post.objects.filter(status = True,published_date__lt=now).order_by('-published_date')[:4]
     return {'posts' : posts}
 
 
