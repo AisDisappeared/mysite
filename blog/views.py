@@ -17,7 +17,7 @@ def blog_view(request,cat_name=None,author_username=None):
     p = Paginator(posts,2)
     try:
         page_number = request.GET.get('page')
-        posts  = p.get_page(page_number)
+        posts = p.get_page(page_number)
     except PageNotAnInteger:
         posts = posts.get_page(1)
     except EmptyPage:
