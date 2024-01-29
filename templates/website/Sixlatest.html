@@ -17,7 +17,7 @@
                 {% for post in posts %}
                 <div class="single-recent-blog-post item">
                     <div class="thumb">
-                        <img class="img-fluid" src="{% static 'img/b1.jpg' %}" alt="" />
+                        <img class="img-fluid" src="{{post.image.url}}" alt="" />
                     </div>
                     <div class="details">
                         <div class="tags">
