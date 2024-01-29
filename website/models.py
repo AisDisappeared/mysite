@@ -1,5 +1,9 @@
 from django.db import models
+from django.forms import EmailField
 
+
+
+# contact table
 class contact(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
@@ -13,3 +17,12 @@ class contact(models.Model):
     
     def __str__(self):
         return '{} - {}'.format(self.name, self.id)
+    
+
+
+# Newsletter table 
+class Newsletter(models.Model):
+    email = models.EmailField()
+    
+    def __str__(self):
+        return self.email 

@@ -1,7 +1,7 @@
 from dataclasses import fields
 from django import forms 
 from django.forms import ModelForm
-from website.models import contact 
+from website.models import contact,Newsletter
 
 # form method for working with forms
 class Nameform(forms.Form):
@@ -18,3 +18,12 @@ class contactform(forms.ModelForm):
     class Meta:
         model = contact 
         fields = '__all__' 
+
+
+
+# model form for making forms base on models 
+class NewsletterForm(forms.ModelForm):
+
+    class Meta:
+        model = Newsletter
+        fields = '__all__'
