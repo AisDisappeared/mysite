@@ -14,7 +14,6 @@ class Nameform(forms.Form):
 
 # model form for making forms base on models 
 class contactform(forms.ModelForm):
-
     class Meta:
         model = contact 
         fields = '__all__' 
