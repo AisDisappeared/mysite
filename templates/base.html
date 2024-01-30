@@ -89,6 +89,7 @@
   <!-- #header -->
 
   {% block content %} {% endblock %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.5/sweetalert2.all.min.js"></script>
 
   <!-- start footer Area -->
   <footer class="footer-area section-gap">
@@ -206,6 +207,9 @@
   <script src="{% static 'js/owl.carousel.min.js' %}"></script>
   <script src="{% static 'js/mail-script.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
+
 </body>
 
 </html>
+{% load sweetify %}
+{% sweetify %}

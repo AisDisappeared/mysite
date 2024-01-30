@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect , JsonResponse
 from website.models import contact 
 from website.forms import Nameform ,contactform ,NewsletterForm 
 from django.contrib import messages 
+import sweetify
 
 
 # home page
@@ -19,9 +20,10 @@ def contact_view(request):
             obj = form.save(commit=False)
             obj.name = "unknown"
             obj.save()
-            messages.add_message(request, messages.SUCCESS , 'Your ticket is Submited successfully')
+            sweetify.success(request, 'Your ticket has been submited successfully')
         else:
-            messages.add_message(request, messages.ERROR , 'Your ticket didn\'t Submited successfully')
+            sweetify.error(request, 'Your ticket not submited ')
+
 
     form = contactform(request.POST)
     return render (request , 'website/contact.html',{'form':form})
