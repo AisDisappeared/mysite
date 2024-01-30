@@ -5,7 +5,7 @@ from blog.models import post
 
 register = template.Library()
 
-
+# six latest posts of blog 
 @register.inclusion_tag('website/Sixlatest.html')
 def sixlatest():
    now = timezone.now()

@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 
+# blog home view 
 def blog_view(request,cat_name=None,author_username=None):
     current_time = timezone.now()
     # using lte method to filter less than equal
@@ -28,6 +29,8 @@ def blog_view(request,cat_name=None,author_username=None):
 
 
 
+
+# blog single view
 def blog_single(request, pid):
     current_time = timezone.now()
     all_posts = post.objects.filter(status = 1, published_date__lte = current_time)
@@ -49,9 +52,6 @@ def blog_single(request, pid):
 
 
 
-# # test function
-# def  test(request):
-#     return render(request, 'test.html',)
 
 
 # search view 
