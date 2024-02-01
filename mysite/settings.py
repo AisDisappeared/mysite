@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'sweetify',
     'django.contrib.humanize',
+    'django_extensions',
+
 ]
 
 MIDDLEWARE = [
