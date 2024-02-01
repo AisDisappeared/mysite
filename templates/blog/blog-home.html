@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 {% load blog_tags %}
-
+{% load humanize %}
 <!-- start banner Area -->
 <section class="banner-area relative blog-home-banner" id="home">
   <div class="overlay overlay-bg"></div>
@@ -108,7 +108,7 @@
                 <a href="{% url 'blog:author' author_username=post.author.username %}">{{post.author.get_full_name}}</a> <span class="lnr lnr-user"></span>
               </p>
               <p class="date col-lg-12 col-md-12 col-6">
-                <a href="#">{{post.published_date|date:"d/M/Y" }}
+                <a href="#">{{post.published_date|naturaltime}}
                 </a>
                 <span class="lnr lnr-calendar-full"></span>
               </p>
