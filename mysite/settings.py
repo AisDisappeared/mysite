@@ -42,8 +42,12 @@ INSTALLED_APPS = [
     'sweetify',
     'django.contrib.humanize',
     'django_extensions',
-
+    'django.contrib.sites',
 ]
+
+
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
