@@ -4,7 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect , JsonResponse
 from website.models import contact 
 from website.forms import Nameform ,contactform ,NewsletterForm 
 from django.contrib import messages 
-import sweetify
+import sweetify 
+
 
 
 # home page
