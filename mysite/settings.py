@@ -44,11 +44,16 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
     'sweetify',
+    'robots',
 ]
 
-
+# sites framework 
 SITE_ID = 1
 
+
+# Robots 
+ROBOTS_USE_HOST = False
+ROBOTS_USE_SITEMAP = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
