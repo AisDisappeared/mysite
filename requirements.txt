@@ -1,9 +1,11 @@
 asgiref==3.7.2
+bleach==6.1.0
 Django==5.0.1
 django-debug-toolbar==4.3.0
 django-extensions==3.2.3
 django-next-prev==1.1.0
 django-robots==6.1
+django-summernote==0.8.20.0
 django-taggit==5.0.1
 django_notifications==0.1.dev0
 Jinja2==3.1.2
@@ -12,6 +14,8 @@ pillow==10.2.0
 pydotplus==2.0.2
 pygraphviz==1.12
 pyparsing==3.1.1
+six==1.16.0
 sqlparse==0.4.4
 sweetify==2.3.1
+webencodings==0.5.1
 Werkzeug==3.0.1
