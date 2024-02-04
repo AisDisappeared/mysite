@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -156,6 +157,9 @@ INTERNAL_IPS = [
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4
+
+
+# summernote setting and config
 SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode, default
     'iframe': True,
@@ -190,4 +194,9 @@ SUMMERNOTE_CONFIG = {
             ['view', ['fullscreen', 'codeview', 'help']],
         ],
     },
+}
+
+# captcha model setting and type 
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
 }
