@@ -6,7 +6,7 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 
 # blog home view 
-def blog_view(request,cat_name=None,author_username=None):
+def blog_view(request,cat_name=None,author_username=None,tag_name=None):
     current_time = timezone.now()
     # using lte method to filter less than equal
     posts = post.objects.filter(status = True, published_date__lte = current_time)
@@ -14,7 +14,8 @@ def blog_view(request,cat_name=None,author_username=None):
          posts = posts.filter(category__name = cat_name)
     if author_username:
         posts = posts.filter(author__username= author_username)
-
+    if tag_name:
+        posts = posts.filter(tags__name__in = [tag_name])
     p = Paginator(posts,2)
     try:
         page_number = request.GET.get('page')

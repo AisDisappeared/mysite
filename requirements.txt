@@ -4,6 +4,7 @@ django-debug-toolbar==4.3.0
 django-extensions==3.2.3
 django-next-prev==1.1.0
 django-robots==6.1
+django-taggit==5.0.1
 django_notifications==0.1.dev0
 Jinja2==3.1.2
 MarkupSafe==2.1.3

@@ -43,8 +43,10 @@ def newsletter_view(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
+            sweetify.success(request, 'Your ticket has been submited successfully')
             return HttpResponseRedirect('/')
     else:
+        sweetify.error(request, 'Your ticket not submited ')
         return HttpResponseRedirect('/')
 
 

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'sweetify',
     'robots',
     'debug_toolbar',
+    'taggit',
 ]
 
 # sites framework 
