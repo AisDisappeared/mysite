@@ -2,6 +2,9 @@ from dataclasses import fields
 from django import forms 
 from django.forms import ModelForm
 from website.models import contact,Newsletter
+from captcha.fields import CaptchaField 
+
+
 
 # form method for working with forms
 class Nameform(forms.Form):
@@ -14,6 +17,7 @@ class Nameform(forms.Form):
 
 # model form for making forms base on models 
 class contactform(forms.ModelForm):
+    captcha = CaptchaField()
     class Meta:
         model = contact 
         fields = '__all__' 
