@@ -17,7 +17,7 @@ class PostAdmin(SummernoteModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date'
     empty_value_display = "-empty-"
-    list_display = ('name' , 'post' , 'subject', 'email' , 'approved')
+    list_display = ('name' , 'post' , 'subject','approved')
     list_filter = ('subject','approved')
 
 
