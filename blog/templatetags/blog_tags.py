@@ -1,8 +1,10 @@
 from unicodedata import category
 from django import template
-from blog.models import post 
+from blog.models import post,Comment
 from django.utils import timezone
 from blog.models import Category 
+
+
 
 register = template.Library()
 # simple tag
@@ -12,6 +14,8 @@ def posts_numbs():
     count_of_posts = post.objects.filter(status = True , published_date__lte=now).count()
     return count_of_posts 
 
+
+
 # simple tag
 @register.simple_tag(name='posts')
 def all_posts():
@@ -19,10 +23,14 @@ def all_posts():
     posts = post.objects.all()
     return posts
 
+
+
 # filter tag
 @register.filter
 def snippet(content,arg=20):
     return content[:arg]
+
+
 
 
 # inclusion tag 
@@ -31,6 +39,8 @@ def latestposts():
     now = timezone.now()
     posts = post.objects.filter(status = True,published_date__lt=now).order_by('-published_date')[:4]
     return {'posts' : posts}
+
+
 
 
 # inclusion tag 
@@ -45,4 +55,9 @@ def postCats():
         cat_dict[name] = c 
     return {'categories' : cat_dict}
              
-         
+
+
+# simple tag 
+@register.simple_tag(name='commentscount')
+def totalcomments(pid):
+   return Comment.objects.filter(post=pid,approved=True).count()

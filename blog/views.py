@@ -1,6 +1,6 @@
 from unicodedata import category
 from django.shortcuts import render, get_object_or_404
-from blog.models import post 
+from blog.models import post,Comment
 from django.utils import timezone 
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
@@ -48,7 +48,8 @@ def blog_single(request, pid):
     current_post = get_object_or_404(all_posts, pk = pid)
     current_post.counted_view += 1
     current_post.save() 
-    context = {'Post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post}
+    comments = Comment.objects.filter(post = current_post.id , approved = True)
+    context = {'Post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post , 'comments' : comments}
     return render(request , 'blog/blog-single.html', context)  
 
 
