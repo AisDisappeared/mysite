@@ -26,7 +26,7 @@ class contactform(forms.ModelForm):
 
 # model form for making forms base on models 
 class NewsletterForm(forms.ModelForm):
-
+    captcha = CaptchaField()
     class Meta:
         model = Newsletter
         fields = '__all__'
