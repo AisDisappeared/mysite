@@ -36,14 +36,14 @@ urlpatterns = [
     # path(url address , view)
     path('' , include('website.urls')),
     path('blog/' , include('blog.urls')),
+    path('accounts/',include('accounts.urls')),
     path("sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap",),
     re_path(r'^robots\.txt' , include('robots.urls')),
     path('__debug__/',include(debug_toolbar.urls)),
     path('summernote/', include('django_summernote.urls')),
     path('captcha/' , include('captcha.urls')),
-
-
 ]
+
 # static (/static/ , base_dir / static)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
