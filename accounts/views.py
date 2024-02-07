@@ -1,12 +1,13 @@
 from calendar import c
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login,logout
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 import sweetify
 
 
-
+# login view function
 def login_view(request):
     if not request.user.is_authenticated:
         if request.method == 'POST':
@@ -26,6 +27,8 @@ def login_view(request):
         return redirect('/')
 
 
+
+# logout view function
 @login_required
 def logout_view(request):
     logout(request)
@@ -33,6 +36,14 @@ def logout_view(request):
 
 
 
-
+# signup view function
 def signup_view(request):
-    return render(request,'accounts/signup.html')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            reverse('account:login')
+            sweetify.success(request, 'registeration successful')
+    form = UserCreationForm()
+    context = {'form':form}
+    return render(request,'accounts/signup.html',context)
