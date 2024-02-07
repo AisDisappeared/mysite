@@ -1,9 +1,11 @@
 from unicodedata import category
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from blog.models import post,Comment
 from django.utils import timezone 
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from blog.forms import Commentform
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 import sweetify 
 
 
@@ -68,16 +70,17 @@ def blog_single(request, pid):
     current_post = get_object_or_404(all_posts, pk = pid)
     current_post.counted_view += 1
     current_post.save() 
+    if not post.login_required:
+        # SET A QUERY TO GIVE THE POST'S COMMENTS 
+        comments = Comment.objects.filter(post = current_post.id , approved = True)
 
-    # SET A QUERY TO GIVE THE POST'S COMMENTS 
-    comments = Comment.objects.filter(post = current_post.id , approved = True)
+        # COMMENT FORM 
+        form = Commentform()
+        context = {'Post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post , 'comments' : comments , 'form' : form}
+        return render(request , 'blog/blog-single.html', context)  
 
-    # COMMENT FORM 
-    form = Commentform()
-    context = {'Post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post , 'comments' : comments , 'form' : form}
-    return render(request , 'blog/blog-single.html', context)  
-
-
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
 
 
 

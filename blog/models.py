@@ -1,7 +1,7 @@
 import email
 from django.db import models
 from django.contrib.auth.models import User
-from django.forms import EmailField
+from django.forms import BooleanField, EmailField
 from django.urls import reverse
 from taggit.managers import TaggableManager
 
@@ -25,6 +25,7 @@ class post(models.Model):
     content = models.TextField()
     counted_view = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
+    login_required = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField(null=True)
@@ -44,6 +45,7 @@ class post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(post , on_delete=models.CASCADE)
     name = models.CharField(max_length = 255)  
+    email = models.EmailField(null=True, blank=True)
     subject = models.CharField(max_length = 255)
     message = models.TextField() 
     approved = models.BooleanField(default = False)
