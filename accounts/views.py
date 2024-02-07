@@ -1,4 +1,5 @@
 from calendar import c
+from selectors import EpollSelector
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
@@ -38,12 +39,14 @@ def logout_view(request):
 
 # signup view function
 def signup_view(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            reverse('account:login')
-            sweetify.success(request, 'registeration successful')
-    form = UserCreationForm()
-    context = {'form':form}
-    return render(request,'accounts/signup.html',context)
+   if not request.user.is_authenticated:
+       if request.method == 'POST':
+           form = UserCreationForm(request.POST)
+           if form.is_valid():
+               form.save()
+               return redirect('/')
+       form = UserCreationForm()
+       context = {'form': form}
+       return render(request, 'accounts/signup.html',context)
+   else:
+       return redirect('/')

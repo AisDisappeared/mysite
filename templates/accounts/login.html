@@ -38,7 +38,7 @@
                                     <p class="mb-4">Sign in if you have an account</p>
                                 </div>
                                 <form action="{% url 'accounts:login' %}" method="post">
-                                    {% csrf_token %}
+                                     {% csrf_token %}
                                     <div class="form-group first">
                                         <label for="username">Username</label>
                                         <input type="text" class="form-control" name="username" required>
