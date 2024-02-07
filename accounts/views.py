@@ -1,7 +1,8 @@
 from calendar import c
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 import sweetify
 
 
@@ -25,10 +26,10 @@ def login_view(request):
         return redirect('/')
 
 
-
-# def logout_view(request):
-    # return  
-
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('/')
 
 
 
