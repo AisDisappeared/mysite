@@ -70,7 +70,7 @@ def blog_single(request, pid):
     current_post = get_object_or_404(all_posts, pk = pid)
     current_post.counted_view += 1
     current_post.save() 
-    if not post.login_required:
+    if not current_post.login_required:
         # SET A QUERY TO GIVE THE POST'S COMMENTS 
         comments = Comment.objects.filter(post = current_post.id , approved = True)
 
@@ -80,7 +80,14 @@ def blog_single(request, pid):
         return render(request , 'blog/blog-single.html', context)  
 
     else:
-        return HttpResponseRedirect(reverse('accounts:login'))
+        if request.user.is_authenticated:
+            comments = Comment.objects.filter(post = current_post.id , approved = True)
+            # COMMENT FORM 
+            form = Commentform()
+            context = {'Post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post , 'comments' : comments , 'form' : form}
+            return render(request , 'blog/blog-single.html', context)  
+        else:
+            return HttpResponseRedirect(reverse('accounts:login'))
 
 
 

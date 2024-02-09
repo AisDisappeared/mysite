@@ -44,6 +44,7 @@ def signup_view(request):
            form = UserCreationForm(request.POST)
            if form.is_valid():
                form.save()
+               sweetify.success(request, 'signup successful')
                return redirect('/')
        form = UserCreationForm()
        context = {'form': form}
