@@ -44,13 +44,13 @@ INSTALLED_APPS = [
     'django_extensions',
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
+    'accounts.apps.AccountsConfig',
     'sweetify',
     'robots',
     'debug_toolbar',
     'taggit',
     'django_summernote',
     'captcha',
-    'accounts'
 ]
 
 # sites framework 
