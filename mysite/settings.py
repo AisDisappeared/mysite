@@ -200,3 +200,10 @@ SUMMERNOTE_CONFIG = {
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
+
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
