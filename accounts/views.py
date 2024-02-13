@@ -1,11 +1,9 @@
 from calendar import c
-from selectors import EpollSelector
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .forms import RegisterForm,Loginform
 import sweetify
 
 
@@ -17,7 +15,6 @@ def login_view(request):
             if form.is_valid():
                 username = form.cleaned_data['username']
                 password = form.cleaned_data['password']
-                email = form.cleaned_data['email']
                 user = authenticate(request, username=username, password=password)
                 if user is not None:
                     login(request, user)
@@ -43,12 +40,12 @@ def logout_view(request):
 def signup_view(request):
    if not request.user.is_authenticated:
        if request.method == 'POST':
-           form = RegisterForm(request.POST)
+           form = UserCreationForm(request.POST)
            if form.is_valid():
                form.save()
                sweetify.success(request, 'signup successful')
                return redirect('/')
-       form = RegisterForm()
+       form = UserCreationForm()
        context = {'form': form}
        return render(request, 'accounts/signup.html',context)
    else:

@@ -203,7 +203,3 @@ MULTI_CAPTCHA_ADMIN = {
 
 
 
-
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
