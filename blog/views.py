@@ -94,6 +94,8 @@ def blog_single(request, pid):
 
 
 
+
+
 # search view 
 def blog_search(request):
     now = timezone.now()

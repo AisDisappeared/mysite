@@ -203,3 +203,9 @@ MULTI_CAPTCHA_ADMIN = {
 
 
 
+
+# modelbackend django settings 
+AUTHENTICATION_BACKENDS = [
+    'accounts.custom_auth_backends.CustomAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
