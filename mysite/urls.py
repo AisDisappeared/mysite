@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from os import name
 from django.contrib import admin
 from django.urls import path , include , re_path
 from django.conf import settings
@@ -43,15 +44,17 @@ urlpatterns = [
     path('__debug__/',include(debug_toolbar.urls)),
     path('summernote/', include('django_summernote.urls')),
     path('captcha/' , include('captcha.urls')),
+    # ------------------------------------------------------------------------------
+    # reset password urls paths 
+    path('reset_password/', auth_views.PasswordResetView.as_view(),name="password_reset"), # reset password form
 
+    path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name="password_reset_done"), # reset password data sent
 
-    # reset password urls 
-    #################
-    # path('password_reset/' , auth_views.PasswordResetView.as_view(),name = 'password_reset'),
-    # path('password_reset/done/' , auth_views.PasswordResetDoneView.as_view(),name = 'password_reset_done'),
-    # path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name = 'password_reset_confirm'),
-    # path('reset/done/',auth_views.PasswordResetCompleteView.as_view(),name = 'password_reset_complete'),
-   #################
+    path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name="password_reset_confirm"), # reset password email sent and confirm
+
+    path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(),name="password_reset_complete"), # reset password completed
+    # ------------------------------------------------------------------------------ 
+
 ]
 
 # static (/static/ , base_dir / static)
