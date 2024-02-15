@@ -10,7 +10,7 @@ import sweetify
 
 
 
-# login view function
+# # login view function
 def login_view(request):
     if not request.user.is_authenticated:
         if request.method == 'POST':
@@ -30,10 +30,11 @@ def login_view(request):
                 if user is not None:
                     # Login the user
                     login(request, user)
-                    sweetify.success(request, 'Login successful!')
+                    sweetify.success(request, 'Login successful!', persistent = 'ok')
                     return redirect('/')
-                else:
-                    sweetify.error(request, 'Invalid username or password.', persistent='OK')
+            else:
+                sweetify.error(request, 'Login failed. Please check your username and password.', persistent=':(')
+                return redirect('/')  # Redirect back to the login page
         else:
             form = AuthenticationForm()
         context = {'form': form}
@@ -48,6 +49,7 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
+    sweetify.success(request, 'Logout successful!')
     return redirect('/')
 
 
