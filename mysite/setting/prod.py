@@ -6,9 +6,9 @@ from mysite.settings import *
 SECRET_KEY = 'django-insecure-zh2+bchkbx6wt@e*#eqz0fj7#vpq20=$s(k&%zv9k*-nr7_#kj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['disapp.ir','www.disapp.ir']
 
 
 
