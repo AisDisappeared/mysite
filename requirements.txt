@@ -27,6 +27,7 @@ pycparser==2.21
 pydotplus==2.0.2
 pygraphviz==1.12
 PyJWT==2.8.0
+PyMySQL==1.1.0
 pyparsing==3.1.1
 python3-openid==3.2.0
 requests==2.31.0
@@ -38,4 +39,3 @@ swig==4.2.0
 urllib3==2.2.0
 webencodings==0.5.1
 Werkzeug==3.0.1
-mysqlclient
