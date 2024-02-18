@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,9 +18,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
         <!-- <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}"> -->
+        {% compress css %}
         <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% endcompress %}
         <title>Login #7</title>
     </head>
 
@@ -63,6 +66,7 @@
                 </div>
             </div>
         </div>
+        {% compress js %}
         <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
         <script src="{% static 'js/popper.min2.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -72,6 +76,7 @@
             integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
             data-cf-beacon='{"rayId":"8513c04378de8ec8","b":1,"version":"2024.2.0","token":"cd0b4b3a733644fc843ef0b185f98241"}'
             crossorigin="anonymous"></script>
+        {% endcompress %}
     </body>
 
     </html>

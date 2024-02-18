@@ -41,12 +41,18 @@ INSTALLED_APPS = [
     'taggit',
     'django_summernote',
     'captcha',
+    'compressor',
+    'cssmin',
+    'jsmin',
 ]
 
 
-# Robots 
+# Robots settings
 ROBOTS_USE_HOST = False
 ROBOTS_USE_SITEMAP = False
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,6 +64,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+
+
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -79,8 +88,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
-
+# settings for finding static files by django compressor 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
 
 
 # Password validation
@@ -117,6 +131,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+# static and media url 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
@@ -128,7 +143,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
-
 
 
 SUMMERNOTE_THEME = 'bs4'  # Show summernote with Bootstrap4

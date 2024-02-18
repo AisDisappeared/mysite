@@ -47,3 +47,15 @@ STATICFILES_DIRS = [
 
 # Cookie settings
 CSRF_COOKIE_SECURE = True 
+
+
+
+# django compressor setting  when we are at production virtual 
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = STATIC_ROOT ##django compressor
+COMPRESS_OFFLINE = True
+
+if not COMPRESS_ENABLED: ##django compressor
+    COMPRESS_ENABLED = True
+    COMPRESS_CSS_FILTERS = ["compressor.filters.cssmin.CSSMinFilter"]
+    COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"] ##django compressor
