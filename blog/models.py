@@ -7,7 +7,10 @@ from taggit.managers import TaggableManager
 
 
 
+# tags table and user too , are made by default at django and we just import them and use 
 
+
+# category table making 
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
@@ -15,7 +18,7 @@ class Category(models.Model):
         return self.name 
 
 
-
+# post table making 
 class post(models.Model):
     image = models.ImageField(upload_to='blog/',default='blog/default.jpg')
     tags = TaggableManager()
@@ -42,6 +45,9 @@ class post(models.Model):
         return reverse('blog:single',kwargs={'pid':self.id})
     
 
+
+
+# comment table making 
 class Comment(models.Model):
     post = models.ForeignKey(post , on_delete=models.CASCADE)
     name = models.CharField(max_length = 255)  
@@ -58,3 +64,7 @@ class Comment(models.Model):
     
     class Meta:
         ordering = ['-created_date']
+
+
+
+        
