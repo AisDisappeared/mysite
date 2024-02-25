@@ -34,10 +34,9 @@
 					</div>
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
-							<li><a href="#">Food,</a></li>
-							<li><a href="#">Technology,</a></li>
-							<li><a href="#">Politics,</a></li>
-							<li><a href="#">Lifestyle</a></li>
+							{% for tag in Post.tags.all %}
+							<li><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}\</a></li>
+						    {% endfor %}
 						</ul>
 						<div class="user-details row">
 							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{Post.author}}</a> <span
@@ -144,7 +143,7 @@
 						{% csrf_token %}
 						<input type="hidden" name="post" value="{{Post.id}}">
 						{% if request.user.is_authenticated %}
-						<input type="hidden" name="name" value="{{request.user.full_name}}">
+						<input type="hidden" name="name" value="{{request.user.username}}">
 						<input type="hidden" name="email" value="{{request.user.email}}">
 						{% else %}
 						<div class="form-group form-inline">
