@@ -49,7 +49,7 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    sweetify.success(request, 'Logout successful!')
+    sweetify.success(request, 'Logout successful!',persistent = 'ok')
     return redirect('/')
 
 
