@@ -36,7 +36,7 @@
 						<ul class="tags">
 							{% for tag in Post.tags.all %}
 							<li><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}\</a></li>
-						    {% endfor %}
+							{% endfor %}
 						</ul>
 						<div class="user-details row">
 							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{Post.author}}</a> <span
@@ -50,10 +50,8 @@
 								<span class="lnr lnr-bubble"></span>
 							</p>
 							<ul class="social-links col-lg-12 col-md-12 col-6">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-github"></i></a></li>
-								<li><a href="#"><i class="fa fa-behance"></i></a></li>
+								<a href="https://t.me/Aisdisappeared"><i class="fa fa-telegram"></i></a>  |
+							    <a href="http://www.instagram.com/pv.aliseyfi"><i class="fa fa-instagram"></i></a>
 							</ul>
 						</div>
 					</div>
